@@ -35,7 +35,8 @@ public class VarsManager {
 		try {
 			Document doc = Dom4jUtil.getDOM(rootPath + CONFIG_FILE_NAME);
 			Node root = doc.selectSingleNode("/configuation");
-			if(root != null){
+			//修复单词错误，同时configuation还可以使用
+			if(root != null || (root = doc.selectSingleNode("/configuration")) != null){
 				Node n = root.selectSingleNode("scan-package");
 				if(n != null){
 					vars.put("scan-package", n.getText());
