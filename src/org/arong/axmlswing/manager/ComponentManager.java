@@ -63,14 +63,14 @@ import org.arong.axmlswing.attribute.AttributeValidator;
 public class ComponentManager {
 	private static Container mainWindow;
 	
-	private static Map<String, Component> listeners = new HashMap<String, Component>();
+	private static Map<String, Component> components = new HashMap<String, Component>();
 	
 	public static Component getComponent(String id){
-		return listeners.get(id);
+		return components.get(id);
 	}
 	
 	public static void putComponent(String id, Component component){
-		listeners.put(id, component);
+		components.put(id, component);
 	}
 
 	public static void setMainWindow(Container mainWindow) {
@@ -422,7 +422,6 @@ public class ComponentManager {
 		}else if("jtextpane".equals(name)){
 			JTextPane comp = (JTextPane) c;
 			setTextComponentAttribute(comp, attr);
-		}else if("".equals(name)){
 		}
 	}
 }

@@ -6,7 +6,7 @@
 #####1、配置文件src/axmlswing.cfg.xml
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuation>
 	<!-- 配置扫描事件监听器的包名 -->
 	<scan-package>demo.listeners</scan-package>
 	<!-- 自定义属性，可用于布局文件中：如${title}，
@@ -24,7 +24,7 @@
 			<attr name="columns">10</attr>
 		</tag>
 	</tag-default>
-</configuration>
+</configuation>
 ```
 #####2、布局文件demo.xml
 ```xml

@@ -25,8 +25,6 @@ public class AttributeModel {
 	private Boolean autoscrolls;
 	private Boolean enabled;
 	private Integer layout;//布局管理器
-	
-	
 	private String title;
 	private Integer defaultCloseOperation;
 	private String locationRelativeTo;
@@ -36,7 +34,6 @@ public class AttributeModel {
 	private Boolean resizable;//是否可由用户调整大小
 	private Boolean focusableWindowState;//是否可以成为焦点窗口
 	private Boolean locationByPlatform;//窗口应出现在默认位置，则为 true，如果应出现在当前位置，则为 false
-	
 	private String caretColor;//光标颜色
 	private String selectionColor;//呈现选定的当前颜色
 	private String selectedTextColor;//选中文本颜色
@@ -50,20 +47,16 @@ public class AttributeModel {
 	private Integer selectionEnd;//选择结束点设置为指定的位置
 	private String page;//设置当前要显示的 URL
 	private String contentType;//设置此编辑器所处理的内容类型
-	
 	private Boolean lineWrap;//是否可以换行
 	private Integer rows;//设置此 TextArea 的行数
 	private Integer tabSize;//设置选项卡要扩大到的字符数
 	private Boolean wrapStyleWord;//是否应该使用单词边界来换行
-	
 	private Boolean armed;// 将菜单项标识为“调出”。
 	private Integer delay;//向上或向下弹出前建议的延迟
 	private String menuLocation;//设置弹出组件的位置。
 	private Boolean popupMenuVisible;//设置菜单弹出的可见性
 	private Boolean state;//选定状态
-	
 	private String color;
-	
 	private Boolean closable;//设置是否可以通过某个用户操作关闭此 JInternalFrame。
 	private Boolean closed;//如果参数为 true，则关闭此内部窗体
 	private Boolean iconifiable;//设置 iconable 属性，对于能够使 JInternalFrame 变成一个图标的用户而言，该属性必须为 true。某些外观可能不实现图标化；它们将忽略此属性。
@@ -72,13 +65,10 @@ public class AttributeModel {
 	private Boolean maximizable;//是否可以通过某个用户操作最大化此 JInternalFrame
 	//private Boolean maximum;// 最大化并还原此内部窗体。
 	private Boolean rootPaneCheckingEnabled;//设置是否将对 add 和 setLayout 的调用转发到 contentPane
-	
 	private Integer windowDecorationStyle;//设置 JRootPane应提供的 Window装饰类型（例如，边界、关闭 Window 的小部件、标题等）。
-	
 	//scroll
 	private Integer horizontalScrollBarPolicy;//确定水平滚动条何时显示在滚动窗格上
 	private Integer verticalScrollBarPolicy;//确定垂直滚动条何时显示在滚动窗格上
-	
 	//jList
 	private Integer fixedCellHeight;//设置一个固定值，将用于列表中每个单元的高度。
 	private Integer fixedCellWidth;//设置一个固定值，将用于列表中每个单元的宽度。
@@ -91,13 +81,11 @@ public class AttributeModel {
 	private Boolean valueIsAdjusting;
 	private Integer visibleRowCount;//指示要显示的首选行数（不要求滚动）
 	private String items;//选项
-	
 	//JPopupMenu
 	private Boolean defaultLightWeightPopupEnabled;//弹出菜单是否为轻量级
 	private Boolean lightWeightPopupEnabled;//是否为禁用弹出菜单轻量级
 	private String label;//设置弹出菜单的标签
 	private String popupSize;//设置弹出窗口的大小
-	
 	//JProgressBar
 	private Boolean indeterminate;//进度条处于确定模式中还是处于不确定模式中
 	private Integer maximum;//设置进度条的最大值
@@ -105,7 +93,6 @@ public class AttributeModel {
 	private Integer orientation;//设置进度条的方向
 	private String string;//设置进度字符串的值
 	private Boolean stringPainted;//进度条是否应该呈现进度字符串
-	
 	//JSlider
 	private Integer extent;//设置滑块所“覆盖”的范围的大小
 	private Boolean inverted;//是否转滑块显示的值范围
@@ -116,7 +103,6 @@ public class AttributeModel {
 	private Boolean paintTrack;//是否在滑块上绘制滑道
 	private Boolean snapToTicks;//是否解析为最靠近用户放置滑块处的刻度标记的值
 	private Integer value;//设置滑块的当前值
-	
 	//JSplitPane
 	private Boolean continuousLayout;//
 	private Integer dividerLocation;//设置分隔条的位置
@@ -124,12 +110,10 @@ public class AttributeModel {
 	private Integer lastDividerLocation;//设置分隔条所处的最后位置
 	private Boolean oneTouchExpandable;//
 	private Double resizeWeight;// 指定当分隔窗格的大小改变时如何分配额外空间
-	
 	//JTabbedPane
 	private String mnemonicAt;//设置用于访问指定选项卡的键盘助记符
 	private Integer tabLayoutPolicy;//设置在一次运行中不能放入所有的选项卡时，选项卡窗格使用的对选项卡进行布局安排的策略
 	private Integer tabPlacement;//设置此选项卡窗格的选项卡布局。
-	
 	//JTable
 	private Boolean autoCreateColumnsFromModel;//是否应该自动创建列
 	private Boolean autoCreateRowSorter;//指定其模型更改时是否应该为表创建一个 RowSorter
@@ -152,17 +136,13 @@ public class AttributeModel {
 	private Boolean showVerticalLines;//是否绘制单元格之间的垂直线
 	private Boolean surrendersFocusOnKeystroke;//设置由于 JTable 为某个单元格转发键盘事件而导致编辑器被激活时，此 JTable 中的编辑器是否获得键盘焦点。
 	private Boolean updateSelectionOnSort;// 指定排序后是否应该更新选择
-	
 	private Integer draggedDistance;//拖动的距离
 	private Boolean reorderingAllowed;//是否可以拖动列头，以重新排序各列
 	private Boolean resizingAllowed;//是否可以通过在头间拖动来调整各列的大小
-	
 	//JToolBar
 	private Boolean floatable;//是否可以移动工具栏
 	private Boolean rollover;//是否翻转工具栏
-	
 	private String tipText;//设置显示工具提示时要显示的文本。
-	
 	//JFileChooser
 	private Integer debugGraphicsOptions;//启用或禁用与组件或其某个子组件内执行的每个图形操作有关的诊断信息。
 	private Boolean acceptAllFileFilterUsed;//确定是否将 AcceptAll FileFilter 用作可选择过滤器列表中一个可用选项
@@ -177,7 +157,6 @@ public class AttributeModel {
 	private Boolean multiSelectionEnabled;//设置文件选择器，以允许选择多个文件
 	private String selectedFile;//设置选中的文件
 	private String selectedFiles;//设置选中的文件
-	
 	//JTree
 	private Boolean expandsSelectedPaths;//
 	private Boolean invokesStopCellEditing;//
@@ -188,19 +167,14 @@ public class AttributeModel {
 	private String selectionRows;//选择与显示的每个指定行对应的节点
 	private Boolean showsRootHandles;//设置 showsRootHandles 属性的值，它指定是否应显示节点句柄
 	private Integer toggleClickCount;//设置节点展开或关闭之前鼠标的单击数
-
 	private String extentSize;//使用视图坐标设置该视图可见部分的大小
 	private Integer scrollMode;//用于控制滚动视口内容的方法
 	private String viewPosition;//设置显示在视口左上角的视图坐标，如果不存在视图，则不执行任何操作
 	private String viewSize;//设置视图的大小
-	
 	private Integer dragMode;//设置桌面窗格使用的“拖动样式”。
-	
 	private Integer focusLostBehavior;//设置丢失焦点时的行为
-	
 	private Integer maximumRowCount;//设置 JComboBox 显示的最大行数
 	private Boolean popupVisible;//设置弹出窗口的可见性
-	
 	private Boolean opaque;//如果为 true，则该组件绘制其边界内的所有像素。
 	private String toolTipText;
 	private String text;
