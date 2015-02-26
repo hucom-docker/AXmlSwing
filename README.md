@@ -1,7 +1,7 @@
 # AXmlSwing
 使用xml简化swing开发
 ###文档
-请查看[wiki](https://github.com/dipoo/AXmlSwing/wiki)
+请查看[wiki](wiki)
 ###如何使用
 #####1、配置文件src/axmlswing.cfg.xml
 ```xml
