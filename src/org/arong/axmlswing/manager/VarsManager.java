@@ -1,5 +1,6 @@
 package org.arong.axmlswing.manager;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,7 +27,7 @@ public class VarsManager {
 	 */
 	private static Map<String, AttributeModel> defaults = new HashMap<String, AttributeModel>();
 	
-	public final static String CONFIG_FILE_NAME = "/aswing.cfg.xml"; 
+	public final static String CONFIG_FILE_NAME = File.separator + "aswing.cfg.xml";
 	
 	static{
 		String rootPath = ClassLoader.getSystemResource("").getPath();

@@ -40,7 +40,7 @@ public final class Dom4jUtil {
     }
     
     public static void writeDOM2XML(String file_path, Document doc) throws Exception{
-    	FileUtil.ifNotExistsThenCreate(file_path.substring(0, file_path.lastIndexOf("/")));
+    	FileUtil.ifNotExistsThenCreate(file_path.substring(0, file_path.lastIndexOf(File.separator)));
         writeDOM2XML(new File(file_path), doc);
     }
 

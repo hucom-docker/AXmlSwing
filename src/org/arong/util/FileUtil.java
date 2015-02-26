@@ -54,7 +54,7 @@ public final class FileUtil {
     	BufferedOutputStream bos = null;
     	int size = 0;
     	try {
-    		File fs = new File(path + "/" + name);
+    		File fs = new File(path + File.separator + name);
 			bis = new BufferedInputStream(in);
 			bos = new BufferedOutputStream(new FileOutputStream(fs));
 			byte[] buff = new byte[1024];
@@ -182,16 +182,16 @@ public final class FileUtil {
             clsName = clsName.substring(packName.length() + 1);
             //判定包名是否是简单包名，如果是，则直接将包名转换为路径，
             if (packName.indexOf(".") < 0)
-                path = packName + "/";
+                path = packName + File.separator;
             else {//否则按照包名的组成部分，将包名转换为路径
                 int start = 0, end = 0;
                 end = packName.indexOf(".");
                 while (end != -1) {
-                    path = path + packName.substring(start, end) + "/";
+                    path = path + packName.substring(start, end) + File.separator;
                     start = end + 1;
                     end = packName.indexOf(".", start);
                 }
-                path = path + packName.substring(start) + "/";
+                path = path + packName.substring(start) + File.separator;
             }
         }
        
@@ -212,7 +212,7 @@ public final class FileUtil {
        
         //如果类文件被打包到JAR等文件中时，去掉对应的JAR等打包文件名
         if (realPath.endsWith("!"))
-            realPath = realPath.substring(0, realPath.lastIndexOf("/"));
+            realPath = realPath.substring(0, realPath.lastIndexOf(File.separator));
        
        
         //结果字符串可能因平台默认编码不同而不同。因此，改用 decode(String,String) 方法指定编码。
