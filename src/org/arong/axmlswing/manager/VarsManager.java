@@ -69,7 +69,7 @@ public class VarsManager {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			//配置文件不是必需的
 		}
 	}
 	
