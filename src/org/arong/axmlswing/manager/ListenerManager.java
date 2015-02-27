@@ -31,7 +31,7 @@ public class ListenerManager {
 	 * 扫描注解，添加控件事件
 	 */
 	static {
-		Set<Class<?>> classes = getClasses(VarsManager.getVarValue("scan-package"));
+		Set<Class<?>> classes = getClasses(VarsManager.getVarValue(VarsManager.SCAN_PACKAGE));
 		if(classes != null){
 			for(Class<?> clazz : classes){
 				EventAnnotation ea = clazz.getAnnotation(EventAnnotation.class);

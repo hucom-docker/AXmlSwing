@@ -29,6 +29,10 @@ public class VarsManager {
 	
 	public final static String CONFIG_FILE_NAME = File.separator + "aswing.cfg.xml";
 	
+	public final static String SCAN_PACKAGE = "scan-package-xxx";
+	
+	public final static String EXTENDS_PREFFIX = "extends-";
+	
 	static{
 		String rootPath = ClassLoader.getSystemResource("").getPath();
 		vars.put("rootPath", rootPath);
@@ -38,10 +42,12 @@ public class VarsManager {
 			Node root = doc.selectSingleNode("/configuation");
 			//修复单词错误，同时configuation还可以使用
 			if(root != null || (root = doc.selectSingleNode("/configuration")) != null){
+				//包扫描路径
 				Node n = root.selectSingleNode("scan-package");
 				if(n != null){
-					vars.put("scan-package", n.getText());
+					vars.put(SCAN_PACKAGE, n.getText());
 				}
+				//自定义变量
 				n = root.selectSingleNode("properties");
 				if(n != null){
 					List<Node> ns =  n.selectNodes("property");
@@ -51,6 +57,7 @@ public class VarsManager {
 						}
 					}
 				}
+				//标签全局属性
 				n = root.selectSingleNode("tag-default");
 				if(n != null){
 					List<Node> ns =  n.selectNodes("tag");
@@ -65,6 +72,18 @@ public class VarsManager {
 								}
 								defaults.put(((Element)tag).attributeValue("name").toLowerCase(), model);
 							}
+						}
+					}
+				}
+				//组件扩展
+				n = root.selectSingleNode("extends");
+				if(n != null){
+					List<Node> ns =  n.selectNodes("component");
+					Element e;
+					if(ns != null && ns.size() > 0){
+						for(Node comp : ns){
+							e = (Element) comp;
+							vars.put(EXTENDS_PREFFIX + e.attributeValue("name").toLowerCase(), e.getText());
 						}
 					}
 				}
@@ -84,6 +103,10 @@ public class VarsManager {
 	
 	public static Map<String, AttributeModel> getDefaults() {
 		return defaults;
+	}
+	
+	public static String getExtentsCompValue(String name){
+		return vars.get(EXTENDS_PREFFIX + name);
 	}
 	
 	/**

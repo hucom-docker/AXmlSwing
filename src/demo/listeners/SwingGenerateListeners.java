@@ -11,7 +11,10 @@ import javax.swing.JTextField;
 import org.arong.axmlswing.GuiXmlLoader;
 import org.arong.axmlswing.manager.ComponentManager;
 import org.arong.axmlswing.manager.VarsManager;
-
+/**
+ * 另一种方式注册布局文件监听器
+ * @author dipoo
+ */
 public class SwingGenerateListeners {
 	public SwingGenerateListeners(){
 		JButton testBtn = (JButton) ComponentManager.getComponent("testBtn");
@@ -35,6 +38,7 @@ public class SwingGenerateListeners {
 					}else if("".equals(url_.getText())){
 						JOptionPane.showMessageDialog(null, "数据库URL不能为空");
 					}else{
+						//加载另外一个布局文件
 						GuiXmlLoader.load(VarsManager.getVarValue("rootPath") + "/layout/demo2.xml");
 					}
 				}

@@ -74,6 +74,8 @@ import org.dom4j.Element;
  */
 public class GuiXmlLoader {
 	
+	public final static String LAYOUT_WINDOW_PREFFIX = "window:";
+	
 	public static void load(String path){
 		Document doc = null;
 		try {
@@ -85,8 +87,8 @@ public class GuiXmlLoader {
 		Element e = doc.getRootElement();
 		
 		//检测是否已存在
-		if(ComponentManager.getComponent("window:" + path) != null){
-			ComponentManager.getComponent("window:" + path).setVisible(true);
+		if(ComponentManager.getComponent(LAYOUT_WINDOW_PREFFIX + path) != null){
+			ComponentManager.getComponent(LAYOUT_WINDOW_PREFFIX + path).setVisible(true);
 			return;
 		}
 		try {
@@ -102,11 +104,9 @@ public class GuiXmlLoader {
 				JOptionPane.showMessageDialog(null, "只能使用JFrame/JWindow/JDialog作为根元素！");
 				return;
 			}
-			//如果未定义id属性,则将组件name值设置为id
 			if(attr.getId() == null){
-				attr.setId(window.getName());
+				ComponentManager.putComponent(attr.getId(), window);
 			}
-			ComponentManager.putComponent(attr.getId(), window);
 			if(ComponentManager.getMainWindow() == null){
 				ComponentManager.setMainWindow(window);
 			}
@@ -134,7 +134,7 @@ public class GuiXmlLoader {
 			parse(window, e, attr);
 			window.setVisible(true);
 			//将此布局文件放入组件管理器
-			ComponentManager.putComponent("window:" + path, window);
+			ComponentManager.putComponent(LAYOUT_WINDOW_PREFFIX + path, window);
 		} catch (IllegalArgumentException e1) {
 			e1.printStackTrace();
 		} catch (IllegalAccessException e1) {
@@ -300,6 +300,23 @@ public class GuiXmlLoader {
 				}else if("jtextpane".equals(tagName)){
 					JTextPane comp = new JTextPane();
 					common(id, comp, attr, l, container, e);
+				}else{
+					//扩展组件
+					String classPkg = VarsManager.getExtentsCompValue(tagName);
+					if(classPkg != null){
+						try {
+							Class clazz = Class.forName(classPkg);
+							Object o = clazz.newInstance();
+							if(o instanceof Container){
+								Container c = (Container)o;
+								common(id, c, attr, l, container, e);
+							}else{
+								o = null;
+							}
+						} catch (ClassNotFoundException e1) {
+						} catch (InstantiationException e1) {
+						}
+					}
 				}
 			}
 		} catch (IllegalArgumentException e1) {

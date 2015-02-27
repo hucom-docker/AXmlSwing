@@ -2,13 +2,12 @@
 <configuation>
 	<!-- 配置扫描事件监听器的包名 -->
 	<scan-package>demo.listeners</scan-package>
-	<!-- 自定义属性，可用于布局文件中：如${title}，或者通过VarsManage.get -->
+	<!-- 自定义属性，可用于布局文件中：如${title}，或者通过VarsManage.getVarValue(name)获取值 -->
 	<properties>
 		<property name="title">虾片神器</property>
 		<property name="alert">下载地址不能为空</property>
 	</properties>
 	<!-- 定义标签全局属性 -->
-	<!---->
 	<tag-default>
 		<tag name="JLabel">
 			<attr name="horizontalAlignment">4</attr>
@@ -21,4 +20,9 @@
 			<attr name="size">205, 25</attr>
 		</tag>
 	</tag-default>
+	<!--组件扩展-->
+	<extends>
+		<!--DemoBox必须是Container的子类-->
+		<component name="DemoBox">demo.extend.DemoBox</component>
+	</extends>
 </configuation>
