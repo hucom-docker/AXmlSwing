@@ -1,0 +1,14 @@
+<?xml encoding="UTF-8"?>
+<!ELEMENT configuration (scan-package?,properties?,tag-default?,extends?)>
+<!ELEMENT scan-package (#PCDATA)>
+<!ELEMENT properties (property)*>
+<!ELEMENT tag-default (tag)*>
+<!ELEMENT extends (component)*>
+<!ELEMENT property (#PCDATA)>
+<!ATTLIST property name CDATA #REQUIRED>
+<!ELEMENT tag (attr)*>
+<!ATTLIST tag name CDATA #REQUIRED>
+<!ELEMENT component (#PCDATA)>
+<!ATTLIST component name CDATA #REQUIRED>
+<!ELEMENT attr (#PCDATA)>
+<!ATTLIST attr name CDATA #REQUIRED>

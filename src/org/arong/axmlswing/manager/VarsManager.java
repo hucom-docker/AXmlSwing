@@ -27,7 +27,7 @@ public class VarsManager {
 	 */
 	private static Map<String, AttributeModel> defaults = new HashMap<String, AttributeModel>();
 	
-	public final static String CONFIG_FILE_NAME = File.separator + "aswing.cfg.xml";
+	public final static String CONFIG_FILE_NAME = File.separator + "axmlswing.cfg.xml";
 	
 	public final static String SCAN_PACKAGE = "scan-package-xxx";
 	
@@ -90,6 +90,7 @@ public class VarsManager {
 			}
 		} catch (Exception e) {
 			//配置文件不是必需的
+			e.printStackTrace();
 		}
 	}
 	
