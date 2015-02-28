@@ -90,7 +90,6 @@ public class VarsManager {
 			}
 		} catch (Exception e) {
 			//配置文件不是必需的
-			e.printStackTrace();
 		}
 	}
 	

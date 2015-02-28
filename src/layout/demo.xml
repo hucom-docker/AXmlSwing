@@ -5,7 +5,7 @@
 <JFrame id="mainWindow" title="${title}" width="300" height="300" locationRelativeTo="null" defaultCloseOperation="3"
 	iconImage="${rootPath}/anchor.gif" resizable="false" layout="0">
 	<JMenuBar bounds="5, 0, 280, 25" cursor="HAND_CURSOR">
-		<JMenu text="任务">
+		<JMenu text="任务" icon="${rootPath}/anchor.gif">
 			<JMenuItem text="打开"/>
 			<JMenuItem text="保存"/>
 			<JMenuItem text="另存为"/>
@@ -18,8 +18,8 @@
 		<JMenu text="搜索"/>
 		<JMenu text="帮助"/>
 	</JMenuBar>
-	<JLabel text="地址" bounds="10, 50, 60, 30" foreground="blue" icon="${rootPath}/anchor.gif" />
-	<JTextField id="urlField" text="逗比" bounds="60, 50, 220, 30" />
+	<JLabel text="地址" bounds="10, 50, 60, 30" foreground="blue" icon="${rootPath}/anchor.gif" a-ignore="true" />
+	<JTextField id="urlField" text="逗比" bounds="60, 50, 220, 30" a-ignore="true" />
 	<JButton id="downBtn" text="下载" icon="${rootPath}/anchor.gif" toolTipText="按钮提示"
 		bounds="100, 100, 100, 30" foreground="red" cursor="HAND_CURSOR" font="微软染黑,0,12"/>
 </JFrame>
