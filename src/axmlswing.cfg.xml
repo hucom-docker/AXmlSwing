@@ -19,6 +19,9 @@
 			<attr name="columns">10</attr>
 			<attr name="size">205, 25</attr>
 		</tag>
+		<tag name="JButton">
+			<attr name="size">60,30</attr>
+		</tag>
 	</tag-default>
 	<!--组件扩展-->
 	<extends>

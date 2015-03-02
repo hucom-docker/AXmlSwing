@@ -1,6 +1,8 @@
 package org.arong.axmlswing.manager;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +23,8 @@ import org.dom4j.Node;
 public class VarsManager {
 	
 	private static Map<String, String> vars = new HashMap<String, String>();
+	
+	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
 	/**
 	 * 组件全局属性
@@ -116,6 +120,7 @@ public class VarsManager {
 		if(value == null)
 			return null;
 		String str = value.trim();
+		vars.put("now", sdf.format(new Date()));
 		for(String key : vars.keySet()){
 			str = str.replaceAll("\\$\\{" + key + "\\}", vars.get(key));
 		}
