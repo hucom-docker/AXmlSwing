@@ -119,9 +119,13 @@ public class AttributeTransfer {
 			}else{
 				String[] compsId = a[1].split("\\|");
 				//关闭某些窗口：close:helpWindow|settingWindow
+				Component c;
 				for(String id : compsId){
-					Component c;
-					c = ComponentManager.getComponent(id);
+					if("this".equals(id)){
+						c = (Component)source;
+					}else{
+						c = ComponentManager.getComponent(id.trim());
+					}
 					if(c != null){
 						setAction(c, action);
 					}

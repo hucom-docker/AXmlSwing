@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JFrame id="JFrame" title="JFrame" width="300" height="300"
+	 locationRelativeTo="null" defaultCloseOperation="2"><!-- defaultCloseOperation="2"代表DISPOSE_ON_CLOSE -->
+</JFrame>

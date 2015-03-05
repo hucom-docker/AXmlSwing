@@ -9,7 +9,7 @@
 			<JMenuItem text="打开"/>
 			<JMenuItem text="保存"/>
 			<JMenuItem text="另存为"/>
-			<JMenuItem id="exitMenuItem" text="退出" icon="${rootPath}/anchor.gif"/>
+			<JMenuItem onclick="exit" text="退出" icon="${rootPath}/anchor.gif"/>
 		</JMenu>
 		<JMenu text="编辑">
 			<JMenuItem text="新建"/>
