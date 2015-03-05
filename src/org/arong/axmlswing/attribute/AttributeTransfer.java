@@ -108,27 +108,26 @@ public class AttributeTransfer {
 	}
 	
 	public final static void actionEvent(Object source, String value){
-		String[] a = value.split(":");
+		String[] a = value.split("\\(");
 		String action = a[0];
 		//退出应用程序:exit
 		if("exit".equals(action)){
 			System.exit(0);
 		}else if(a.length == 2){
-			if("this".equals(a[1].trim())){
-				setAction((Component)source, action);
-			}else{
-				String[] compsId = a[1].split("\\|");
-				//关闭某些窗口：close:helpWindow|settingWindow
-				Component c;
-				for(String id : compsId){
-					if("this".equals(id)){
-						c = (Component)source;
-					}else{
-						c = ComponentManager.getComponent(id.trim());
-					}
-					if(c != null){
-						setAction(c, action);
-					}
+			if(a[1].indexOf(")") != -1){
+				a[1] = a[1].replaceAll("\\)", "");//去掉右括号
+			}
+			String[] compsId = a[1].split(",");
+			//关闭某些窗口：close:helpWindow|settingWindow
+			Component c;
+			for(String id : compsId){
+				if("this".equals(id.trim())){
+					c = (Component)source;
+				}else{
+					c = ComponentManager.getComponent(id.trim());
+				}
+				if(c != null){
+					setAction(c, action);
 				}
 			}
 		}
