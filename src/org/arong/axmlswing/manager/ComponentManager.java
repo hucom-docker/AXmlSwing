@@ -121,7 +121,7 @@ public class ComponentManager {
 				JWindow w = (JWindow) comp;
 				w.getContentPane().setForeground(c);
 			}else{
-				comp.setBackground(c);
+				comp.setForeground(c);
 			}
 		}
 		if(AttributeValidator.size(attr.getLocation())){
@@ -196,7 +196,11 @@ public class ComponentManager {
 		}
 		//设置单击事件
 		if(!AttributeValidator.isBlank(attr.getOnclick())){
-			comp.addMouseListener(AttributeTransfer.onclick(attr.getOnclick(), 1));
+			if(comp instanceof JMenuItem){
+				((JMenuItem) comp).addActionListener(AttributeTransfer.actionListener(attr.getOnclick()));
+			}else{
+				comp.addMouseListener(AttributeTransfer.onclick(attr.getOnclick(), 1));
+			}
 		}
 		//设置双击事件
 		if(!AttributeValidator.isBlank(attr.getOndblclick())){

@@ -5,6 +5,8 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -92,54 +94,69 @@ public class AttributeTransfer {
 			public void mouseClicked(MouseEvent e) {
 				if(e.getClickCount() != clickCount)
 					return;
-				String[] a = value.split(":");
-				String action = a[0];
-				//退出应用程序:exit
-				if("exit".equals(action)){
-					System.exit(0);
-				}else if(a.length == 2){
-					String[] compsId = a[1].split("\\|");
-					//关闭某些窗口：close:helpWindow|settingWindow
-					for(String id : compsId){
-						Component c;
-						c = ComponentManager.getComponent(id);
-						if(c != null){
-							setAction(c, action);
-						}
-					}
-				}
-			}
-			
-			private void setAction(Component c, String action){
-				if("close".equals(action)){
-					if(c instanceof Window){//只有Window的子类才能关闭
-						((Window)c).dispose();
-					}
-				}else if("show".equals(action)){
-					c.setVisible(true);
-				}else if("hide".equals(action)){
-					c.setVisible(false);
-				}else if("enabled".equals(action)){
-					c.setEnabled(true);
-				}else if("disabled".equals(action)){
-					c.setEnabled(false);
-				}else if("click".equals(action)){
-					MouseListener[] mls = c.getMouseListeners();
-					if(mls != null){
-						for (int i = 0; i < mls.length; i++) {
-							mls[i].mouseClicked(new MouseEvent(c, 1, 1, 1, 1, 1, 1, false, 1));
-						}
-					}
-				}else if("dbclick".equals(action)){
-					MouseListener[] mls = c.getMouseListeners();
-					if(mls != null){
-						for (int i = 0; i < mls.length; i++) {
-							mls[i].mouseClicked(new MouseEvent(c, 1, 1, 1, 1, 1, 2, false, 1));
-						}
-					}
-				}
+				actionEvent(e.getSource(), value);
 			}
 		};
 	}
 	
+	public static ActionListener actionListener(final String value){
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				actionEvent(e.getSource(), value);
+			}
+		};
+	}
+	
+	public final static void actionEvent(Object source, String value){
+		String[] a = value.split(":");
+		String action = a[0];
+		//退出应用程序:exit
+		if("exit".equals(action)){
+			System.exit(0);
+		}else if(a.length == 2){
+			if("this".equals(a[1].trim())){
+				setAction((Component)source, action);
+			}else{
+				String[] compsId = a[1].split("\\|");
+				//关闭某些窗口：close:helpWindow|settingWindow
+				for(String id : compsId){
+					Component c;
+					c = ComponentManager.getComponent(id);
+					if(c != null){
+						setAction(c, action);
+					}
+				}
+			}
+		}
+	}
+	
+	private static void setAction(Component c, String action){
+		if("close".equals(action)){
+			if(c instanceof Window){//只有Window的子类才能关闭
+				((Window)c).dispose();
+			}
+		}else if("show".equals(action)){
+			c.setVisible(true);
+		}else if("hide".equals(action)){
+			c.setVisible(false);
+		}else if("enabled".equals(action)){
+			c.setEnabled(true);
+		}else if("disabled".equals(action)){
+			c.setEnabled(false);
+		}else if("click".equals(action)){
+			MouseListener[] mls = c.getMouseListeners();
+			if(mls != null){
+				for (int i = 0; i < mls.length; i++) {
+					mls[i].mouseClicked(new MouseEvent(c, 1, System.currentTimeMillis(), 1, 1, 1, 1, false, 1));
+				}
+			}
+		}else if("dblclick".equals(action)){
+			MouseListener[] mls = c.getMouseListeners();
+			if(mls != null){
+				for (int i = 0; i < mls.length; i++) {
+					mls[i].mouseClicked(new MouseEvent(c, 1, System.currentTimeMillis(), 1, 1, 1, 2, false, 1));
+				}
+			}
+		}
+	}
 }
