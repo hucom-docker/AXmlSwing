@@ -212,7 +212,8 @@ public class AttributeModel {
 	private Boolean focusCycleRoot;
 	private Long multiClickThreshhold;
 	
-	private String onclick;//点击事件的快捷写法
+	private String onclick;//单击事件的快捷写法
+	private String ondblclick;//双击事件的快捷写法
 	
 	public String getId() {
 		return id;
@@ -1385,5 +1386,11 @@ public class AttributeModel {
 	}
 	public Boolean getUndecorated() {
 		return undecorated;
+	}
+	public void setOndblclick(String ondblclick) {
+		this.ondblclick = ondblclick;
+	}
+	public String getOndblclick() {
+		return ondblclick;
 	}
 }

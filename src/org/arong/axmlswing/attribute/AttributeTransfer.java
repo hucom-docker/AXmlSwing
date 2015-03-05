@@ -81,24 +81,65 @@ public class AttributeTransfer {
 		return new ImageIcon(value);
 	}
 	
-	public static MouseListener onclick(final String value){
+	/**
+	 * 解析表达式返回鼠标接听器<br>
+	 * 格式为：action:id1|id2<br/>
+	 * action:动作指令
+	 * id:组件id
+	 */
+	public static MouseListener onclick(final String value, final int clickCount){
 		return new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
+				if(e.getClickCount() != clickCount)
+					return;
 				String[] a = value.split(":");
+				String action = a[0];
 				//退出应用程序:exit
-				if("exit".equals(a[0])){
+				if("exit".equals(action)){
 					System.exit(0);
+				}else if(a.length == 2){
+					String[] compsId = a[1].split("\\|");
+					//关闭某些窗口：close:helpWindow|settingWindow
+					for(String id : compsId){
+						Component c;
+						c = ComponentManager.getComponent(id);
+						if(c != null){
+							setAction(c, action);
+						}
+					}
 				}
-				//关闭某个窗口：close:helpWindow
-				else if("close".endsWith(a[0])){
-					if(a.length == 2){
-						Component c = ComponentManager.getComponent(a[1]);
-						if(c != null && c instanceof Window){
-							((Window)c).dispose();
+			}
+			
+			private void setAction(Component c, String action){
+				if("close".equals(action)){
+					if(c instanceof Window){//只有Window的子类才能关闭
+						((Window)c).dispose();
+					}
+				}else if("show".equals(action)){
+					c.setVisible(true);
+				}else if("hide".equals(action)){
+					c.setVisible(false);
+				}else if("enabled".equals(action)){
+					c.setEnabled(true);
+				}else if("disabled".equals(action)){
+					c.setEnabled(false);
+				}else if("click".equals(action)){
+					MouseListener[] mls = c.getMouseListeners();
+					if(mls != null){
+						for (int i = 0; i < mls.length; i++) {
+							mls[i].mouseClicked(new MouseEvent(c, 1, 1, 1, 1, 1, 1, false, 1));
+						}
+					}
+				}else if("dbclick".equals(action)){
+					MouseListener[] mls = c.getMouseListeners();
+					if(mls != null){
+						for (int i = 0; i < mls.length; i++) {
+							mls[i].mouseClicked(new MouseEvent(c, 1, 1, 1, 1, 1, 2, false, 1));
 						}
 					}
 				}
 			}
 		};
 	}
+	
 }

@@ -196,7 +196,11 @@ public class ComponentManager {
 		}
 		//设置单击事件
 		if(!AttributeValidator.isBlank(attr.getOnclick())){
-			comp.addMouseListener(AttributeTransfer.onclick(attr.getOnclick()));
+			comp.addMouseListener(AttributeTransfer.onclick(attr.getOnclick(), 1));
+		}
+		//设置双击事件
+		if(!AttributeValidator.isBlank(attr.getOndblclick())){
+			comp.addMouseListener(AttributeTransfer.onclick(attr.getOndblclick(), 2));
 		}
 	}
 	
