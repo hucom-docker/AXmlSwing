@@ -2,6 +2,7 @@ package org.arong.axmlswing.manager;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -93,11 +94,35 @@ public class ComponentManager {
 		}
 		if(AttributeValidator.color(attr.getBackground())){
 			//setBackground
-			comp.setBackground(AttributeTransfer.color(attr.getBackground()));
+			Color c = AttributeTransfer.color(attr.getBackground());
+			if(comp instanceof JFrame){
+				JFrame w = (JFrame) comp;
+				w.getContentPane().setBackground(c);
+			}else if(comp instanceof JDialog){
+				JDialog w = (JDialog) comp;
+				w.getContentPane().setBackground(c);
+			}else if(comp instanceof JWindow){
+				JWindow w = (JWindow) comp;
+				w.getContentPane().setBackground(c);
+			}else{
+				comp.setBackground(c);
+			}
 		}
 		if(AttributeValidator.color(attr.getForeground())){
 			//setForeground
-			comp.setForeground(AttributeTransfer.color(attr.getForeground()));
+			Color c = AttributeTransfer.color(attr.getForeground());
+			if(comp instanceof JFrame){
+				JFrame w = (JFrame) comp;
+				w.getContentPane().setForeground(c);
+			}else if(comp instanceof JDialog){
+				JDialog w = (JDialog) comp;
+				w.getContentPane().setForeground(c);
+			}else if(comp instanceof JWindow){
+				JWindow w = (JWindow) comp;
+				w.getContentPane().setForeground(c);
+			}else{
+				comp.setBackground(c);
+			}
 		}
 		if(AttributeValidator.size(attr.getLocation())){
 			int[] arr = AttributeTransfer.size(attr.getLocation());

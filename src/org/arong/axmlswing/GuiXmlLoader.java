@@ -360,6 +360,8 @@ public class GuiXmlLoader {
 				((JWindow)container).getContentPane().add(comp);
 			}else if(container instanceof JDialog){
 				((JDialog)container).getContentPane().add(comp);
+			}else if(container instanceof JScrollPane){
+				((JScrollPane)container).getViewport().setView(comp);
 			}else{
 				container.add(comp);
 			}
@@ -382,6 +384,5 @@ public class GuiXmlLoader {
 			}
 		}
 		return model;
-	}
-	
+	}	
 }
