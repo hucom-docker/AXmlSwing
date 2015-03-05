@@ -104,7 +104,7 @@ public class GuiXmlLoader {
 				JOptionPane.showMessageDialog(null, "只能使用JFrame/JWindow/JDialog作为根元素！");
 				return;
 			}
-			if(attr.getId() == null){
+			if(attr.getId() != null){
 				ComponentManager.putComponent(attr.getId(), window);
 			}
 			if(ComponentManager.getMainWindow() == null){
