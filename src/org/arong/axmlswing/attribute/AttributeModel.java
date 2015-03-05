@@ -33,6 +33,7 @@ public class AttributeModel {
 	private String maximizedBounds;//最大化边界
 	private Boolean resizable;//是否可由用户调整大小
 	private Boolean focusableWindowState;//是否可以成为焦点窗口
+	private Boolean undecorated;//禁用或启用此窗体的装饰。只有在窗体不可显示时才调用此方法。
 	private Boolean locationByPlatform;//窗口应出现在默认位置，则为 true，如果应出现在当前位置，则为 false
 	private String caretColor;//光标颜色
 	private String selectionColor;//呈现选定的当前颜色
@@ -1378,5 +1379,11 @@ public class AttributeModel {
 	}
 	public String getOnclick() {
 		return onclick;
+	}
+	public void setUndecorated(Boolean undecorated) {
+		this.undecorated = undecorated;
+	}
+	public Boolean getUndecorated() {
+		return undecorated;
 	}
 }
