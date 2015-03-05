@@ -116,8 +116,4 @@ public class AttributeValidator {
 		}
 		return value == null;
 	}
-	
-	public static void main(String[] args) {
-		System.out.println(font("123, 2, 1"));
-	}
 }

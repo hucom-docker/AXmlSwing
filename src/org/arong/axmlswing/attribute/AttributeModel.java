@@ -211,6 +211,8 @@ public class AttributeModel {
 	private Boolean focusCycleRoot;
 	private Long multiClickThreshhold;
 	
+	private String onclick;//点击事件的快捷写法
+	
 	public String getId() {
 		return id;
 	}
@@ -1370,5 +1372,11 @@ public class AttributeModel {
 	}
 	public String getItems() {
 		return items;
+	}
+	public void setOnclick(String onclick) {
+		this.onclick = onclick;
+	}
+	public String getOnclick() {
+		return onclick;
 	}
 }

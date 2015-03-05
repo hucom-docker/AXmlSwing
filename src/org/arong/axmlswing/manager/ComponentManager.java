@@ -194,6 +194,10 @@ public class ComponentManager {
 					break;
 			}
 		}
+		//设置单击事件
+		if(!AttributeValidator.isBlank(attr.getOnclick())){
+			comp.addMouseListener(AttributeTransfer.onclick(attr.getOnclick()));
+		}
 	}
 	
 	/**

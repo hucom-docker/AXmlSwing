@@ -1,13 +1,19 @@
 package org.arong.axmlswing.attribute;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Window;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import org.arong.axmlswing.manager.ColorManager;
+import org.arong.axmlswing.manager.ComponentManager;
 import org.arong.axmlswing.manager.CursorManager;
 import org.arong.axmlswing.manager.FontManager;
 
@@ -73,5 +79,26 @@ public class AttributeTransfer {
 	
 	public static Icon icon(String value){
 		return new ImageIcon(value);
+	}
+	
+	public static MouseListener onclick(final String value){
+		return new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				String[] a = value.split(":");
+				//退出应用程序:exit
+				if("exit".equals(a[0])){
+					System.exit(0);
+				}
+				//关闭某个窗口：close:helpWindow
+				else if("close".endsWith(a[0])){
+					if(a.length == 2){
+						Component c = ComponentManager.getComponent(a[1]);
+						if(c != null && c instanceof Window){
+							((Window)c).dispose();
+						}
+					}
+				}
+			}
+		};
 	}
 }
