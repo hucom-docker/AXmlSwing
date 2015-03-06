@@ -39,7 +39,7 @@ public class SwingGenerateListeners {
 						JOptionPane.showMessageDialog(null, "数据库URL不能为空");
 					}else{
 						//加载另外一个布局文件
-						GuiXmlLoader.load(VarsManager.getVarValue("rootPath") + "/layout/demo2.xml");
+						GuiXmlLoader.load(VarsManager.getVarValue("rootPath") + "demo//layout/demo2.xml");
 					}
 				}
 			});

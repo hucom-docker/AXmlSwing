@@ -238,7 +238,7 @@ public final class FileUtil {
 		    if(line == null){
 		        break;
 		    }
-		    txt += line;
+		    txt += line + "\n";
 		}
 		if(br != null){
 			br.close();

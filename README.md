@@ -40,7 +40,7 @@
 			<JMenuItem text="打开"/>
 			<JMenuItem text="保存"/>
 			<JMenuItem text="另存为"/>
-			<JMenuItem text="退出"/>
+			<JMenuItem onclick="exit()" text="退出"/>
 		</JMenu>
 		<JMenu text="编辑">
 			<JMenuItem text="新建"/>
