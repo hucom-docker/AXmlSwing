@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JDialog title="JLabel" width="300" height="200" onclose="close(xmlSourceWindow)"
+	 locationRelativeTo="null" defaultCloseOperation="2" layout="1">
+	<JCheckBox selected="true" text="男" />
+	<JCheckBox text="女" />
+</JDialog>

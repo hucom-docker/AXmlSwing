@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JDialog title="JButton" width="300" height="200" onclose="close(xmlSourceWindow)"
+	 locationRelativeTo="null" defaultCloseOperation="2" layout="1">
+	<JButton text="A" mnemonic="65" onclick="hide(this)"/>
+	<JButton text="B" mnemonic="66"/>
+	<JButton text="C"/>
+	<JButton text="D"/>
+	<JButton text="E"/>
+	<JButton text="F"/>
+	<JButton text="G"/>
+	<JButton text="H"/>
+	<JButton text="I"/>
+	<JButton text="J"/>
+	<JButton text="K"/>
+	<JButton text="L"/>
+	<JButton text="M"/>
+	<JButton text="N"/>
+	<JButton text="O"/>
+	<JButton text="P"/>
+	<JButton text="Q"/>
+	<JButton text="R"/>
+	<JButton text="S"/>
+	<JButton text="T"/>
+	<JButton text="U"/>
+	<JButton text="V"/>
+	<JButton text="W"/>
+	<JButton text="X"/>
+	<JButton text="Y"/>
+	<JButton text="Z"/>
+	<JButton text="0"/>
+	<JButton text="1"/>
+	<JButton text="2"/>
+	<JButton text="3"/>
+	<JButton text="4"/>
+	<JButton text="5"/>
+	<JButton text="6"/>
+	<JButton text="7"/>
+	<JButton text="8"/>
+	<JButton text="9"/>
+</JDialog>

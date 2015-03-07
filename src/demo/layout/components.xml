@@ -15,7 +15,7 @@
 	</JScrollPane>
 	<JDialog id="xmlSourceWindow" title="源码" width="960" height="480"
  		locationRelativeTo="null" defaultCloseOperation="2" layout="2" a-added="false">
- 		<JScrollPane autoscrolls="true">
+ 		<JScrollPane>
 			<JTextArea id="xmlTextPanel" editable="false"/>
 		</JScrollPane>
  	</JDialog>

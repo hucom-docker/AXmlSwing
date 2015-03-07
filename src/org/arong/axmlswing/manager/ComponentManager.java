@@ -11,6 +11,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.Rectangle;
+import java.awt.Window;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -206,6 +207,11 @@ public class ComponentManager {
 		if(!AttributeValidator.isBlank(attr.getOndblclick())){
 			comp.addMouseListener(AttributeTransfer.onclick(attr.getOndblclick(), 2));
 		}
+		/**设置窗口事件 start**/
+		if(!AttributeValidator.isBlank(attr.getOnclose()) && comp instanceof Window){
+			((Window)comp).addWindowListener(AttributeTransfer.windowListener(attr.getOnclose(), 1));
+		}
+		/**设置窗口事件 end**/
 	}
 	
 	/**

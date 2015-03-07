@@ -62,6 +62,23 @@ public class XmlListListener extends AbstractListener{
 		if(MouseEvent.BUTTON1 == e.getButton()){
 			//双击
 			if(2 == e.getClickCount()){
+				
+				JDialog sourceFrame = (JDialog) ComponentManager.getComponent("xmlSourceWindow");
+				sourceFrame.setTitle((String) xmlList.getSelectedValue());
+				JTextArea tp = (JTextArea) ComponentManager.getComponent("xmlTextPanel");
+				tp.setBorder(null);
+				String t = "";
+				try {
+					t = FileUtil.getTextFromReader(new FileReader((String) xmlList.getSelectedValue()), true);
+				} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				tp.setText(t);
+				tp.setCaretPosition(0);
+				sourceFrame.setVisible(true);
+				
 				String layoutFile = xmlList.getSelectedValue().toString();
 				GuiXmlLoader.load(layoutFile);
 			}
@@ -85,6 +102,7 @@ public class XmlListListener extends AbstractListener{
 						e1.printStackTrace();
 					}
 					tp.setText(t);
+					tp.setCaretPosition(0);
 					sourceFrame.setVisible(true);
 				}
 			});

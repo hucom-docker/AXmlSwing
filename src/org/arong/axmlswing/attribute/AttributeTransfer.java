@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -95,6 +97,46 @@ public class AttributeTransfer {
 				if(e.getClickCount() != clickCount)
 					return;
 				actionEvent(e.getSource(), value);
+			}
+		};
+	}
+	
+	public static WindowListener windowListener(final String value, final int i) {
+		return new WindowListener() {
+			public void windowClosed(WindowEvent e) {
+				if(i == 1){
+					actionEvent(e.getSource(), value);
+				}
+			}
+			public void windowOpened(WindowEvent e) {
+				if(i == 2){
+					actionEvent(e.getSource(), value);
+				}
+			}
+			public void windowClosing(WindowEvent e) {
+				if(i == 3){
+					actionEvent(e.getSource(), value);
+				}
+			}
+			public void windowActivated(WindowEvent e) {
+				if(i == 4){
+					actionEvent(e.getSource(), value);
+				}
+			}
+			public void windowDeactivated(WindowEvent e) {
+				if(i == 5){
+					actionEvent(e.getSource(), value);
+				}
+			}
+			public void windowIconified(WindowEvent e) {
+				if(i == 6){
+					actionEvent(e.getSource(), value);
+				}
+			}
+			public void windowDeiconified(WindowEvent e) {
+				if(i == 7){
+					actionEvent(e.getSource(), value);
+				}
 			}
 		};
 	}

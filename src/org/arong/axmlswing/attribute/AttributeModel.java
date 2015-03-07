@@ -215,6 +215,8 @@ public class AttributeModel {
 	private String onclick;//单击事件的快捷写法
 	private String ondblclick;//双击事件的快捷写法
 	
+	private String onclose;//关闭事件的快捷写法
+	
 	public String getId() {
 		return id;
 	}
@@ -1392,5 +1394,11 @@ public class AttributeModel {
 	}
 	public String getOndblclick() {
 		return ondblclick;
+	}
+	public void setOnclose(String onclose) {
+		this.onclose = onclose;
+	}
+	public String getOnclose() {
+		return onclose;
 	}
 }
