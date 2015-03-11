@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <JWindow id="JWindow" title="JWindow" width="300" height="300" background="333"
-	 locationRelativeTo="null" layout="6" onclick="close(this)"><!-- onclick="close(this)"点击关闭窗口 -->
+	 locationRelativeTo="null" layout="6" onclick="close(this,xmlSourceWindow)">
 	 <JLabel text="天下武功，唯快不破" font="微软雅黑,1,18" foreground="eebb00" />
 </JWindow>

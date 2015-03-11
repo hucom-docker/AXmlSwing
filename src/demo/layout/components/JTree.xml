@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<JDialog title="JList" size="300,300" locationRelativeTo="null"
+<JDialog title="JTree" size="300,300" locationRelativeTo="null"
 	  onclose="close(xmlSourceWindow)" defaultCloseOperation="2">
 	 <JScrollPane>
 	 	<JTree id="demo_JTree" />
