@@ -132,6 +132,16 @@ public class GuiXmlLoader {
 				((AbstractListener)l).init(window);
 			}
 			parse(window, e, attr);
+			//实例化监听器类
+			if(attr.getListener() != null){
+				try {
+					Class.forName(attr.getListener()).newInstance();
+				} catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
+				} catch (InstantiationException e1) {
+					e1.printStackTrace();
+				}
+			}
 			window.setVisible(true);
 			//将此布局文件放入组件管理器
 			ComponentManager.putComponent(LAYOUT_WINDOW_PREFFIX + path, window);

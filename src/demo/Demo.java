@@ -19,8 +19,7 @@ public class Demo {
 		//GuiXmlLoader.load(Demo.class.getResource("/").getPath() + "demo/layout/demo.xml");
 		//GuiXmlLoader.load(Demo.class.getResource("/").getPath() + "demo/layout/demo2.xml");
 		
-		/*GuiXmlLoader.load(Demo.class.getResource("/").getPath() + "demo/layout/swing-generate.xml");
-		new SwingGenerateListeners();//注册监听器*/		
+		//GuiXmlLoader.load(Demo.class.getResource("/").getPath() + "demo/layout/swing-generate.xml");
 		
 		GuiXmlLoader.load(Demo.class.getResource("/").getPath() + "demo/layout/components.xml");
 		System.out.println("渲染时间："+ (System.currentTimeMillis() - s));

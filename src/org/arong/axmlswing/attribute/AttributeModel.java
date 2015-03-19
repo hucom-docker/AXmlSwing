@@ -217,6 +217,8 @@ public class AttributeModel {
 	
 	private String onclose;//关闭事件的快捷写法
 	
+	private String listener;//监听器类路径
+	
 	public String getId() {
 		return id;
 	}
@@ -1400,5 +1402,11 @@ public class AttributeModel {
 	}
 	public String getOnclose() {
 		return onclose;
+	}
+	public void setListener(String listener) {
+		this.listener = listener;
+	}
+	public String getListener() {
+		return listener;
 	}
 }
