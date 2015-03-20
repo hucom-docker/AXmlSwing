@@ -214,8 +214,31 @@ public class AttributeModel {
 	
 	private String onclick;//单击事件的快捷写法
 	private String ondblclick;//双击事件的快捷写法
+	private String onenter;//鼠标进入
+	private String onexit;//鼠标离开
+	private String onpress;//鼠标按下
+	private String onrelease;//鼠标弹起
+	private String ondrag;//鼠标拖拽
+	private String onmove;//鼠标移动
+	private String onwheelmove;//鼠标滚轮
+	
+	private String onkeypress;//键盘按下
+	private String onkeyrelease;//键盘释放
+	private String onkeytype;//键盘键入
+	
+	private String onfocusgained;//获得键盘焦点
+	private String onfocuslost;//失去键盘焦点
 	
 	private String onclose;//关闭事件的快捷写法
+	private String onopen;
+	private String onclosing;
+	private String onactivate;
+	private String ondeactivate;
+	private String oniconify;
+	private String ondeiconify;
+	private String onstatechange;
+	private String ongainedfocus;
+	private String onlostfocus;
 	
 	private String listener;//监听器类路径
 	
@@ -1408,5 +1431,131 @@ public class AttributeModel {
 	}
 	public String getListener() {
 		return listener;
+	}
+	public void setOnopen(String onopen) {
+		this.onopen = onopen;
+	}
+	public String getOnopen() {
+		return onopen;
+	}
+	public void setOnclosing(String onclosing) {
+		this.onclosing = onclosing;
+	}
+	public String getOnclosing() {
+		return onclosing;
+	}
+	public void setOnactivate(String onactivate) {
+		this.onactivate = onactivate;
+	}
+	public String getOnactivate() {
+		return onactivate;
+	}
+	public void setOndeactivate(String ondeactivate) {
+		this.ondeactivate = ondeactivate;
+	}
+	public String getOndeactivate() {
+		return ondeactivate;
+	}
+	public void setOniconify(String oniconify) {
+		this.oniconify = oniconify;
+	}
+	public String getOniconify() {
+		return oniconify;
+	}
+	public void setOndeiconify(String ondeiconify) {
+		this.ondeiconify = ondeiconify;
+	}
+	public String getOndeiconify() {
+		return ondeiconify;
+	}
+	public void setOnenter(String onenter) {
+		this.onenter = onenter;
+	}
+	public String getOnenter() {
+		return onenter;
+	}
+	public void setOnexit(String onexit) {
+		this.onexit = onexit;
+	}
+	public String getOnexit() {
+		return onexit;
+	}
+	public void setOnpress(String onpress) {
+		this.onpress = onpress;
+	}
+	public String getOnpress() {
+		return onpress;
+	}
+	public void setOnrelease(String onrelease) {
+		this.onrelease = onrelease;
+	}
+	public String getOnrelease() {
+		return onrelease;
+	}
+	public void setOndrag(String ondrag) {
+		this.ondrag = ondrag;
+	}
+	public String getOndrag() {
+		return ondrag;
+	}
+	public void setOnmove(String onmove) {
+		this.onmove = onmove;
+	}
+	public String getOnmove() {
+		return onmove;
+	}
+	public void setOnwheelmove(String onwheelmove) {
+		this.onwheelmove = onwheelmove;
+	}
+	public String getOnwheelmove() {
+		return onwheelmove;
+	}
+	public void setOnkeypress(String onkeypress) {
+		this.onkeypress = onkeypress;
+	}
+	public String getOnkeypress() {
+		return onkeypress;
+	}
+	public void setOnkeyrelease(String onkeyrelease) {
+		this.onkeyrelease = onkeyrelease;
+	}
+	public String getOnkeyrelease() {
+		return onkeyrelease;
+	}
+	public void setOnkeytype(String onkeytype) {
+		this.onkeytype = onkeytype;
+	}
+	public String getOnkeytype() {
+		return onkeytype;
+	}
+	public void setOnstatechange(String onstatechange) {
+		this.onstatechange = onstatechange;
+	}
+	public String getOnstatechange() {
+		return onstatechange;
+	}
+	public void setOngainedfocus(String ongainedfocus) {
+		this.ongainedfocus = ongainedfocus;
+	}
+	public String getOngainedfocus() {
+		return ongainedfocus;
+	}
+	public void setOnlostfocus(String onlostfocus) {
+		this.onlostfocus = onlostfocus;
+	}
+	public String getOnlostfocus() {
+		return onlostfocus;
+	}
+	public void setOnfocusgained(String onfocusgained) {
+		this.onfocusgained = onfocusgained;
+	}
+	public String getOnfocusgained() {
+		return onfocusgained;
+	}
+	public void setOnfocuslost(String onfocuslost) {
+		this.onfocuslost = onfocuslost;
+	}
+	public String getOnfocuslost() {
+		return onfocuslost;
 	}
 }

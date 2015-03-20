@@ -7,14 +7,24 @@ import java.awt.Font;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseWheelEvent;
 import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
 import java.awt.event.WindowListener;
+import java.awt.event.WindowStateListener;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 import org.arong.axmlswing.manager.ColorManager;
 import org.arong.axmlswing.manager.ComponentManager;
@@ -87,7 +97,7 @@ public class AttributeTransfer {
 	
 	/**
 	 * 解析表达式返回鼠标接听器<br>
-	 * 格式为：action:id1|id2<br/>
+	 * 格式为：action(id1,id2……)<br/>
 	 * action:动作指令
 	 * id:组件id
 	 */
@@ -97,6 +107,81 @@ public class AttributeTransfer {
 				if(e.getClickCount() != clickCount)
 					return;
 				actionEvent(e.getSource(), value);
+			}
+		};
+	}
+	public static MouseListener mouseListener(final String value, final int i){
+		return new MouseAdapter() {
+			public void mouseEntered(MouseEvent e) {
+				if(i == 1){
+					actionEvent(e.getSource(), value);
+				}
+			}
+			public void mouseExited(MouseEvent e) {
+				if(i == 2){
+					actionEvent(e.getSource(), value);
+				}
+			}
+			public void mousePressed(MouseEvent e) {
+				if(i == 3){
+					actionEvent(e.getSource(), value);
+				}
+			}
+			public void mouseReleased(MouseEvent e) {
+				if(i == 4){
+					actionEvent(e.getSource(), value);
+				}
+			}
+			public void mouseDragged(MouseEvent e) {
+				if(i == 5){
+					actionEvent(e.getSource(), value);
+				}
+			}
+			public void mouseMoved(MouseEvent e) {
+				if(i == 6){
+					actionEvent(e.getSource(), value);
+				}
+			}
+			public void mouseWheelMoved(MouseWheelEvent e) {
+				if(i == 7){
+					actionEvent(e.getSource(), value);
+				}
+			}
+			
+		};
+	}
+	
+	public static KeyListener keyListener(final String value, final int i) {
+		return new KeyAdapter() {
+			public void keyPressed(KeyEvent e) {
+				if(i == 1){
+					actionEvent(e.getSource(), value);
+				}
+			}
+			public void keyReleased(KeyEvent e) {
+				if(i == 2){
+					actionEvent(e.getSource(), value);
+				}
+			}
+			public void keyTyped(KeyEvent e) {
+				if(i == 3){
+					actionEvent(e.getSource(), value);
+				}
+			}
+		};
+	}
+	
+	public static FocusListener focusListener(final String value, final int i) {
+		return new FocusAdapter() {
+			public void focusGained(FocusEvent e) {
+				if(i == 1){
+					actionEvent(e.getSource(), value);
+				}
+			}
+			public void focusLost(FocusEvent e) {
+				if(i == 2){
+					actionEvent(e.getSource(), value);
+				}
 			}
 		};
 	}
@@ -141,6 +226,30 @@ public class AttributeTransfer {
 		};
 	}
 	
+	public static WindowStateListener windowStateListener(final String value){
+		return new WindowStateListener() {
+			public void windowStateChanged(WindowEvent e) {
+				actionEvent(e.getSource(), value);
+			}
+		};
+	}
+	
+	public static WindowFocusListener windowFocusListener(final String value, final int i){
+		return new WindowFocusListener() {
+			public void windowLostFocus(WindowEvent e) {
+				if(i == 1){
+					actionEvent(e.getSource(), value);
+				}
+			}
+			
+			public void windowGainedFocus(WindowEvent e) {
+				if(i == 2){
+					actionEvent(e.getSource(), value);
+				}
+			}
+		};
+	}
+	
 	public static ActionListener actionListener(final String value){
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -153,23 +262,38 @@ public class AttributeTransfer {
 		String[] a = value.split("\\(");
 		String action = a[0];
 		//退出应用程序:exit
-		if("exit".equals(action)){
+		if("exit".equals(action)){//不带参数
 			System.exit(0);
-		}else if(a.length == 2){
+		}else if(a.length == 2){//带参数
 			if(a[1].indexOf(")") != -1){
 				a[1] = a[1].replaceAll("\\)", "");//去掉右括号
 			}
-			String[] compsId = a[1].split(",");
-			//关闭某些窗口：close:helpWindow|settingWindow
-			Component c;
-			for(String id : compsId){
-				if("this".equals(id.trim())){
-					c = (Component)source;
+			String[] params = a[1].split(",");
+			
+			/**
+			 * 字符串
+			 */
+			if("alert".equals(action)){
+				if(params.length == 1){
+					JOptionPane.showMessageDialog(null, params[0]);
 				}else{
-					c = ComponentManager.getComponent(id.trim());
+					JOptionPane.showMessageDialog("this".equals(params[0].trim()) ? (Component)source : ComponentManager.getComponent(params[0].trim()), params[1]);
 				}
-				if(c != null){
-					setAction(c, action);
+			}else{
+				/**
+				 * 作用于组件
+				 */
+				//关闭某些窗口：close:helpWindow|settingWindow
+				Component c;
+				for(String id : params){
+					if("this".equals(id.trim())){
+						c = (Component)source;
+					}else{
+						c = ComponentManager.getComponent(id.trim());
+					}
+					if(c != null){
+						setAction(c, action);
+					}
 				}
 			}
 		}

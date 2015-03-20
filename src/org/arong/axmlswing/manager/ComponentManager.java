@@ -195,9 +195,12 @@ public class ComponentManager {
 					break;
 			}
 		}
+		
+		/**鼠标事件 start*/
 		//设置单击事件
 		if(!AttributeValidator.isBlank(attr.getOnclick())){
-			if(comp instanceof JMenuItem){
+			//JMenuItem,JCheckBoxMenuItem,JRadioButtonMenuItem不支持mouseClick,而JMenu支持
+			if(!comp.getClass().getSimpleName().equals("JMenu") && comp instanceof JMenuItem){
 				((JMenuItem) comp).addActionListener(AttributeTransfer.actionListener(attr.getOnclick()));
 			}else{
 				comp.addMouseListener(AttributeTransfer.onclick(attr.getOnclick(), 1));
@@ -207,9 +210,80 @@ public class ComponentManager {
 		if(!AttributeValidator.isBlank(attr.getOndblclick())){
 			comp.addMouseListener(AttributeTransfer.onclick(attr.getOndblclick(), 2));
 		}
+		if(!AttributeValidator.isBlank(attr.getOnenter())){
+			comp.addMouseListener(AttributeTransfer.mouseListener(attr.getOnenter(), 1));
+		}
+		if(!AttributeValidator.isBlank(attr.getOnexit())){
+			comp.addMouseListener(AttributeTransfer.mouseListener(attr.getOnexit(), 2));
+		}
+		if(!AttributeValidator.isBlank(attr.getOnpress())){
+			comp.addMouseListener(AttributeTransfer.mouseListener(attr.getOnpress(), 3));
+		}
+		if(!AttributeValidator.isBlank(attr.getOnrelease())){
+			comp.addMouseListener(AttributeTransfer.mouseListener(attr.getOnrelease(), 4));
+		}
+		if(!AttributeValidator.isBlank(attr.getOndrag())){
+			comp.addMouseListener(AttributeTransfer.mouseListener(attr.getOndrag(), 5));
+		}
+		if(!AttributeValidator.isBlank(attr.getOnmove())){
+			comp.addMouseListener(AttributeTransfer.mouseListener(attr.getOnmove(), 6));
+		}
+		if(!AttributeValidator.isBlank(attr.getOnwheelmove())){
+			comp.addMouseListener(AttributeTransfer.mouseListener(attr.getOnwheelmove(), 7));
+		}
+		/**鼠标事件 end*/
+		/**键盘事件 start*/
+		if(!AttributeValidator.isBlank(attr.getOnkeypress())){
+			comp.addKeyListener(AttributeTransfer.keyListener(attr.getOnkeypress(), 1));
+		}
+		if(!AttributeValidator.isBlank(attr.getOnkeyrelease())){
+			comp.addKeyListener(AttributeTransfer.keyListener(attr.getOnkeyrelease(), 2));
+		}
+		if(!AttributeValidator.isBlank(attr.getOnkeytype())){
+			comp.addKeyListener(AttributeTransfer.keyListener(attr.getOnkeytype(), 3));
+		}
+		if(!AttributeValidator.isBlank(attr.getOnkeytype())){
+			comp.addFocusListener(AttributeTransfer.focusListener(attr.getOnkeytype(), 3));
+		}
+		if(!AttributeValidator.isBlank(attr.getOnfocusgained())){
+			comp.addFocusListener(AttributeTransfer.focusListener(attr.getOnfocusgained(), 1));
+		}
+		if(!AttributeValidator.isBlank(attr.getOnfocuslost())){
+			comp.addFocusListener(AttributeTransfer.focusListener(attr.getOnfocuslost(), 2));
+		}
+		/**键盘事件 end*/
 		/**设置窗口事件 start**/
-		if(!AttributeValidator.isBlank(attr.getOnclose()) && comp instanceof Window){
-			((Window)comp).addWindowListener(AttributeTransfer.windowListener(attr.getOnclose(), 1));
+		if(comp instanceof Window){
+			if(!AttributeValidator.isBlank(attr.getOnclose())){
+				((Window)comp).addWindowListener(AttributeTransfer.windowListener(attr.getOnclose(), 1));
+			}
+			if(!AttributeValidator.isBlank(attr.getOnopen())){
+				((Window)comp).addWindowListener(AttributeTransfer.windowListener(attr.getOnopen(), 2));
+			}
+			if(!AttributeValidator.isBlank(attr.getOnclosing())){
+				((Window)comp).addWindowListener(AttributeTransfer.windowListener(attr.getOnclosing(), 3));
+			}
+			if(!AttributeValidator.isBlank(attr.getOnactivate())){
+				((Window)comp).addWindowListener(AttributeTransfer.windowListener(attr.getOnactivate(), 4));
+			}
+			if(!AttributeValidator.isBlank(attr.getOndeactivate())){
+				((Window)comp).addWindowListener(AttributeTransfer.windowListener(attr.getOndeactivate(), 5));
+			}
+			if(!AttributeValidator.isBlank(attr.getOniconify())){
+				((Window)comp).addWindowListener(AttributeTransfer.windowListener(attr.getOniconify(), 6));
+			}
+			if(!AttributeValidator.isBlank(attr.getOndeiconify())){
+				((Window)comp).addWindowListener(AttributeTransfer.windowListener(attr.getOndeiconify(), 7));
+			}
+			if(!AttributeValidator.isBlank(attr.getOnstatechange())){
+				((Window)comp).addWindowStateListener(AttributeTransfer.windowStateListener(attr.getOnstatechange()));
+			}
+			if(!AttributeValidator.isBlank(attr.getOngainedfocus())){
+				((Window)comp).addWindowFocusListener(AttributeTransfer.windowFocusListener(attr.getOngainedfocus(), 2));
+			}
+			if(!AttributeValidator.isBlank(attr.getOnlostfocus())){
+				((Window)comp).addWindowFocusListener(AttributeTransfer.windowFocusListener(attr.getOnlostfocus(), 1));
+			}
 		}
 		/**设置窗口事件 end**/
 	}
