@@ -2,6 +2,8 @@
 使用xml简化swing开发
 ###文档
 请查看[wiki](http://git.oschina.net/dipoo/AXmlSwing/wikis/home)
+###demo
+请查看[AXmlSwingDemo](http://git.oschina.net/dipoo/AXmlSwingDemo)
 ###如何使用
 #####1、配置文件src/axmlswing.cfg.xml
 ```xml
