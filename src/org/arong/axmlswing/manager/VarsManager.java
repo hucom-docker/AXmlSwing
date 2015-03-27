@@ -1,12 +1,13 @@
 package org.arong.axmlswing.manager;
 
-import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
+import org.arong.axmlswing.GuiXmlLoader;
 import org.arong.axmlswing.attribute.AttributeModel;
 import org.arong.util.BeanUtil;
 import org.arong.util.Dom4jUtil;
@@ -31,7 +32,7 @@ public class VarsManager {
 	 */
 	private static Map<String, AttributeModel> defaults = new HashMap<String, AttributeModel>();
 	
-	public final static String CONFIG_FILE_NAME = File.separator + "axmlswing.cfg.xml";
+	public final static String CONFIG_FILE_NAME = "/axmlswing.cfg.xml";
 	
 	public final static String SCAN_PACKAGE = "scan-package-xxx";
 	
@@ -93,7 +94,11 @@ public class VarsManager {
 				}
 			}
 		} catch (Exception e) {
+			//e.printStackTrace();
 			//配置文件不是必需的
+			if(GuiXmlLoader.getLog()){
+				Logger.getLogger("axmlswing").info("[axmlswing]没有找到配置文件,配置文件路径应为:" + rootPath + CONFIG_FILE_NAME);
+			}
 		}
 	}
 	

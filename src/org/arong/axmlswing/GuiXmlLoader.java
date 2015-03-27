@@ -4,6 +4,7 @@ import java.awt.Container;
 import java.awt.Rectangle;
 import java.awt.Window;
 import java.lang.reflect.Field;
+import java.net.URLDecoder;
 import java.util.EventListener;
 import java.util.Iterator;
 import java.util.List;
@@ -76,10 +77,12 @@ public class GuiXmlLoader {
 	
 	public final static String LAYOUT_WINDOW_PREFFIX = "window:";
 	
+	private static Boolean log = true;
+	
 	public static void load(String path){
 		Document doc = null;
 		try {
-			doc = Dom4jUtil.getDOM(path);
+			doc = Dom4jUtil.getDOM(URLDecoder.decode(path, "UTF-8"));
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
@@ -394,5 +397,13 @@ public class GuiXmlLoader {
 			}
 		}
 		return model;
+	}
+
+	public static void setLog(Boolean log) {
+		GuiXmlLoader.log = log;
+	}
+
+	public static Boolean getLog() {
+		return log;
 	}	
 }

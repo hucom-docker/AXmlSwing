@@ -30,7 +30,7 @@ public class XmlListListener extends AbstractListener{
 	public void init(Container c) {
 		//扫描layout.components包下的所有布局文件并显示
 		JList xmlList = (JList) ComponentManager.getComponent("xmlList");
-		File dataFile = new File(XmlListListener.class.getResource("/").getPath() + "demo/layout/components/");
+		File dataFile = new File(FileUtil.getProjectPath() + "/layout/components/");
 		if(!dataFile.exists()){
 			
 		}else{

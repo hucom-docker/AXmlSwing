@@ -12,12 +12,16 @@ import java.util.Enumeration;
 import java.util.EventListener;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
+import java.util.logging.Logger;
 
+import org.arong.axmlswing.GuiXmlLoader;
 import org.arong.axmlswing.event.EventAnnotation;
+import org.arong.util.ClassUtil;
 
 import sun.net.www.protocol.jar.JarURLConnection;
 /**
@@ -31,20 +35,26 @@ public class ListenerManager {
 	 * 扫描注解，添加控件事件
 	 */
 	static {
-		Set<Class<?>> classes = getClasses(VarsManager.getVarValue(VarsManager.SCAN_PACKAGE));
-		if(classes != null){
-			for(Class<?> clazz : classes){
-				EventAnnotation ea = clazz.getAnnotation(EventAnnotation.class);
-				if(ea != null){
-//					System.out.println(ea.value());
-					String id = ea.value();
+		if(VarsManager.getVarValue(VarsManager.SCAN_PACKAGE) != null){
+			List<Class<?>> classes = ClassUtil.getClassList(VarsManager.getVarValue(VarsManager.SCAN_PACKAGE), true, EventAnnotation.class);
+			System.out.println(classes.size());
+			if(classes != null){
+				for(Class<?> clazz : classes){
 					try {
-						listeners.put(id, (EventListener)clazz.newInstance());
+						EventAnnotation ea = clazz.getAnnotation(EventAnnotation.class);
+						if(ea != null){
+							String id = ea.value();
+							listeners.put(id, (EventListener)clazz.newInstance());
+						}
 					} catch (InstantiationException e) {
 						e.printStackTrace();
 					} catch (IllegalAccessException e) {
 						e.printStackTrace();
 					}
+				}
+			}else{
+				if(GuiXmlLoader.getLog()){
+					Logger.getLogger("axmlswing").info("[axmlswing]没有扫描到任何组件监听器");
 				}
 			}
 		}
@@ -104,6 +114,7 @@ public class ListenerManager {
 				URL url = dirs.nextElement();
 				// 得到协议的名称
 				String protocol = url.getProtocol();
+				System.out.println(protocol);
 				// 如果是以文件的形式保存在服务器上
 				if ("file".equals(protocol)) {
 //					System.err.println("file类型的扫描");

@@ -2,7 +2,7 @@
 <!-- 
 	${rootPath}:项目根目录src(内置变量)
  -->
-<JFrame id="mainWindow" title="组件用法" width="480" height="600"
+<JFrame id="mainWindow" title="${title}组件用法" width="480" height="600"
  	locationRelativeTo="null" defaultCloseOperation="3" resizable="false" layout="0">
  	<JLabel bounds="10,10,250,30" text="提示：双击加载布局文件，右键查看xml源码" />
 	<JScrollPane bounds="20,50,430,480" autoscrolls="true">

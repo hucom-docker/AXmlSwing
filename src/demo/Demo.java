@@ -3,6 +3,7 @@ package demo;
 import javax.swing.UIManager;
 
 import org.arong.axmlswing.GuiXmlLoader;
+import org.arong.util.FileUtil;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 public class Demo {
@@ -15,13 +16,14 @@ public class Demo {
 
 		}
 		long s = System.currentTimeMillis();
+		String dir = FileUtil.getProjectPath();
 		//加载布局文件
-		//GuiXmlLoader.load(Demo.class.getResource("/").getPath() + "demo/layout/demo.xml");
-		//GuiXmlLoader.load(Demo.class.getResource("/").getPath() + "demo/layout/demo2.xml");
+		//GuiXmlLoader.load(dir + "/layout/demo.xml");
+		//GuiXmlLoader.load(dir + "/layout/demo2.xml");
 		
-		//GuiXmlLoader.load(Demo.class.getResource("/").getPath() + "demo/layout/swing-generate.xml");
+		//GuiXmlLoader.load(dir + "/layout/swing-generate.xml");
 		
-		GuiXmlLoader.load(Demo.class.getResource("/").getPath() + "demo/layout/components.xml");
+		GuiXmlLoader.load(dir + "/layout/components.xml");
 		System.out.println("渲染时间："+ (System.currentTimeMillis() - s));
 	}
 }
