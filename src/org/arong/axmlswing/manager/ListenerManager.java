@@ -37,7 +37,6 @@ public class ListenerManager {
 	static {
 		if(VarsManager.getVarValue(VarsManager.SCAN_PACKAGE) != null){
 			List<Class<?>> classes = ClassUtil.getClassList(VarsManager.getVarValue(VarsManager.SCAN_PACKAGE), true, EventAnnotation.class);
-			System.out.println(classes.size());
 			if(classes != null){
 				for(Class<?> clazz : classes){
 					try {

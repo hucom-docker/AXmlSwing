@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<JDialog title="JDialog" width="300" height="300" onclose="close(xmlSourceWindow)"
-	 locationRelativeTo="null" defaultCloseOperation="2"><!-- defaultCloseOperation="2"代表DISPOSE_ON_CLOSE -->
-</JDialog>
