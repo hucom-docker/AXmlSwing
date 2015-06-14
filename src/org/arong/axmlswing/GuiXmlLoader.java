@@ -127,6 +127,7 @@ public class GuiXmlLoader {
 			if(!AttributeValidator.isBlank(attr.getLocationRelativeTo())){
 				window.setLocationRelativeTo(ComponentManager.getComponent(attr.getLocationRelativeTo()));
 			}
+			parse(window, e, attr);
 			EventListener l = ListenerManager.getListener(attr.getId());
 			if(l != null){
 				//设置监听器
@@ -134,7 +135,6 @@ public class GuiXmlLoader {
 				//执行初始化
 				((AbstractListener)l).init(window);
 			}
-			parse(window, e, attr);
 			//实例化监听器类
 			if(attr.getListener() != null){
 				try {
