@@ -79,12 +79,13 @@ public class GuiXmlLoader {
 	
 	private static Boolean log = true;
 	
-	public static void load(String path){
+	public static void load(String path) throws Exception{
 		Document doc = null;
 		try {
 			doc = Dom4jUtil.getDOM(URLDecoder.decode(path, "UTF-8"));
-		} catch (Exception e1) {
-			e1.printStackTrace();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "exception with loading the file:" + path);
+			e.printStackTrace();
 		}
 		AttributeModel attr;
 		Element e = doc.getRootElement();

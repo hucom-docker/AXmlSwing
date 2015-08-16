@@ -18,13 +18,21 @@ import org.dom4j.io.XMLWriter;
 public final class Dom4jUtil {
 	public static boolean locked;
 	public Dom4jUtil(){}
+	private static SAXReader reader;
+	
+	private static SAXReader getReader(){
+		if(reader == null){
+			reader = new SAXReader();
+		}
+		return reader;
+	}
 
     public static Document getDOM(File file) throws Exception{
-        return new SAXReader().read(file);
+        return getReader().read(file);
     }
     
-    public static Document getDOM(String filePath) throws Exception{
-        return new SAXReader().read(new File(filePath));
+    public static Document getDOM(String filePath) throws Exception {
+        return getReader().read(new File(filePath));
     }
     
     public static void createElement(Document doc, String ele){
