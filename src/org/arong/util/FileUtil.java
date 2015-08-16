@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
@@ -282,5 +283,17 @@ public final class FileUtil {
 		   } 
 		    file.delete(); 
 		} 
+	}
+	public static void storeStr2file(String str, String path, String name) throws IOException{
+		if(str == null){
+			return;
+		}
+		File dir = new File(path);
+    	FileUtil.ifNotExistsThenCreate(dir);
+    	FileWriter fw = new FileWriter(path + File.separator + name);
+    	fw.write(str);
+    	if(fw != null){
+    		fw.close();
+    	}
 	}
 }
