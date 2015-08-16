@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 
 import org.arong.axmlswing.GuiXmlLoader;
 import org.arong.axmlswing.event.EventAnnotation;
-import org.arong.util.ClassUtil;
+import org.arong.axmlswing.util.ClassUtil;
 
 import sun.net.www.protocol.jar.JarURLConnection;
 /**

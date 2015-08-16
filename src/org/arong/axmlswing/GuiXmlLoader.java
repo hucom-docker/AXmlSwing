@@ -62,8 +62,8 @@ import org.arong.axmlswing.event.AbstractListener;
 import org.arong.axmlswing.manager.ComponentManager;
 import org.arong.axmlswing.manager.ListenerManager;
 import org.arong.axmlswing.manager.VarsManager;
-import org.arong.util.BeanUtil;
-import org.arong.util.Dom4jUtil;
+import org.arong.axmlswing.util.BeanUtil;
+import org.arong.axmlswing.util.Dom4jUtil;
 import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.Element;
@@ -319,7 +319,7 @@ public class GuiXmlLoader {
 					String classPkg = VarsManager.getExtentsCompValue(tagName);
 					if(classPkg != null){
 						try {
-							Class clazz = Class.forName(classPkg);
+							Class<?> clazz = Class.forName(classPkg);
 							Object o = clazz.newInstance();
 							if(o instanceof Container){
 								Container c = (Container)o;

@@ -1,4 +1,4 @@
-package org.arong.util;
+package org.arong.axmlswing.util;
 
 import java.beans.Introspector;
 import java.lang.reflect.Field;

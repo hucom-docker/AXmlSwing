@@ -1,4 +1,4 @@
-package org.arong.util;
+package org.arong.axmlswing.util;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

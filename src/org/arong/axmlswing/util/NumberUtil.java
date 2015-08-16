@@ -1,4 +1,4 @@
-package org.arong.util;
+package org.arong.axmlswing.util;
 /**
  * int整型工具类
  * @author arong

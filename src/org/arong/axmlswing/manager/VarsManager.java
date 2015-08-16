@@ -9,8 +9,8 @@ import java.util.logging.Logger;
 
 import org.arong.axmlswing.GuiXmlLoader;
 import org.arong.axmlswing.attribute.AttributeModel;
-import org.arong.util.BeanUtil;
-import org.arong.util.Dom4jUtil;
+import org.arong.axmlswing.util.BeanUtil;
+import org.arong.axmlswing.util.Dom4jUtil;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.Node;

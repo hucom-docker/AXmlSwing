@@ -1,7 +1,7 @@
 package org.arong.axmlswing.attribute;
 
 import org.arong.axmlswing.manager.CursorManager;
-import org.arong.util.NumberUtil;
+import org.arong.axmlswing.util.NumberUtil;
 
 /**
  * 属性值验证器
